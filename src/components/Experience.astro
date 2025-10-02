@@ -1,0 +1,25 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+const EXPERIENCE = [
+
+  {
+    date: "August 2024 - November 2024",
+    title: "Full Stack Developer",
+    company: "Parquesoft Sucre",
+    description:
+      "Maintenance service to the platform of the University of Cartagena in its courses and diplomas service, offering maintenance and care services in relational databases (SQL). Development of the company's main ticketing system in Laravel, working together with a specialized development team of the company.",
+      
+  },
+  
+]
+---
+
+<ol class="relative mt-16 ml-3">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>
