@@ -14,13 +14,16 @@ interface Props {
 const { description, title } = Astro.props
 ---
 
+
+
 <!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.svg" media="(prefers-color-scheme: dark)" />
+		<link rel="icon" href="/favicon-light.svg" media="(prefers-color-scheme: light)" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
@@ -48,6 +51,7 @@ const { description, title } = Astro.props
 
 	body {
 		background: #050505;
+		color: white;
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;

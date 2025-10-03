@@ -1,30 +1,94 @@
 ---
+import TypescriptIcon from './icons/TypescriptIcon.astro'
+import JavascriptIcon from './icons/JavaScriptIcon.astro'
+import ReactIcon from './icons/ReactIcon.astro'
+import GitHub from './icons/GitHub.astro'
+import LinkButton from './LinkButton.astro'
+import Link from './icons/Link.astro'
+import FlaskIcon from './icons/FlaskIcon.astro'
+import DockerIcon from './icons/DockerIcon.astro'
 
+
+const TAGS = {
+    TYPESCRIPT: {
+        name: 'Typescript',
+        class: 'bg-blue-600 text-white',
+        icon: TypescriptIcon,
+    },
+    JAVASCRIPT: {
+        name: 'Javascript',
+        class: 'bg-yellow-300 text-black',
+        icon: JavascriptIcon,
+    },
+    REACT: {
+        name: 'React',
+        class: 'bg-cyan-500 text-white',
+        icon: ReactIcon,
+    },
+    FLASK: {
+        name: 'Flask',
+        class: 'bg-yellow-300 text-black',
+        icon: FlaskIcon,
+    },
+    DOCKER: {
+        name: 'Docker',
+        class: 'bg-blue-500 text-white',
+        icon: DockerIcon,
+    },
+}
 const PROJECTS = [
     {
-        title: 'Portafolio de Rafael Castillo',
-        description: 'Web app to show my portfolio',
-        link: '#',
-        github: '#',
-        image: 'https://placehold.co/300x200',
-        tags: ['HTML','CSS','JavaScript']
+        title: 'FHIR Interoperability Medic Project',
+        description: 'This project is a medic project that aims to create a FHIR server that can be used to store and retrieve medical data from a database. The project will also include a React application that will allow users to interact with the FHIR server and view the data stored in it. Check the video for more information.',
+        link: 'https://drive.google.com/file/d/1YlkA5gkVeoe4HHxmx48PuWzN9CXSDmsV/view?usp=sharing',
+        github: 'https://github.com/RafaelC25/FHIR-Interoperability-V2',
+        image: 'public/projects/FHIR.png',
+        tags: [TAGS.TYPESCRIPT, TAGS.JAVASCRIPT, TAGS.REACT],
     },
-    
-    
+
+    {
+      title: 'Sales and Inventory System made for Tornimaq (Local Business)',
+      description: 'Sales and inventory management system based on Flask and containerized in Docker, which optimizes sales recording, automatic billing, and inventory control, ensuring an intuitive interface for salespeople and efficient management of products, sales, and invoices.',
+      link: 'https://famous-raindrop-e02747.netlify.app/',
+      github: 'https://github.com/RafaelC25/Microservicio_Productos',
+      image: 'public/projects/Tornimaq.png',
+      tags: [TAGS.FLASK, TAGS.DOCKER],
+    },
+
 ]
 ---
 
-{
-    PROJECTS.map(({ title, description, link, github, image, tags }) => (
-    <article>
-        <h3 class="text-2xl font-semibold mb-4">{title}</h3>
-        <p class="text-lg mb-4 text-pretty">{description}</p>
-        <ul>
-            {tags.map((tag) => (
-                <li>{tag}</li>
-            ))}
-        </ul>
-        <img src={image} alt={`Captura de pantalla del proyecto ${image}`} />
-    </article>
-    )) 
-}
+{PROJECTS.map(({ title, description, link, github, image, tags }) => (
+  <article class="mb-10">
+    <h3 class="text-2xl font-semibold mb-4">{title}</h3>
+    <p class="text-lg mb-4 text-pretty">{description}</p>
+    <ul class="flex gap-4 flex-row mb-4">
+      {tags.map((tag) => (
+        <li>
+              <span
+                class={`flex gap-x-1 rounded-full text-sm ${tag.class} py-2 px-3 `}
+              >
+                <tag.icon class="size-5" />
+                {tag.name}
+              </span>
+            </li>
+      ))}
+    </ul>
+    <footer class="flex items-end justify-start mt-4 gap-x-4 mb-4">
+          {github && (
+            <LinkButton href={github}>
+              <GitHub class="size-6" />
+              Code
+              
+            </LinkButton>
+          )}
+          {link && (
+            <LinkButton href={link}>
+              <Link class="size-4" />
+              Preview
+            </LinkButton>
+          )}
+        </footer>
+    <img class="rounded shadow-2xl shadow-white/10" src={image} alt={`Captura de pantalla del proyecto ${title}`} />
+  </article>
+))}

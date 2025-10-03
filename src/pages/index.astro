@@ -11,6 +11,8 @@ import Experience from '../components/Experience.astro';
 import Briefcase from '../components/icons/Briefcase.astro';
 import CodeIcon from '../components/icons/CodeIcon.astro';
 import Projects from '../components/Projects.astro';
+import AboutMe from '../components/AboutMe.astro';
+import ProfileCheck from '../components/icons/ProfileCheck.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -32,7 +34,7 @@ description='Contrata a Rafael Castillo para crear tu aplicacion web'>
 				</a>
 			</h1>
 			
-			<h2 class="text-xl lg:text-2xl opacity-90 text-wrap max-w-[800px]">
+			<h2 class="text-xl lg:text-2xl opacity-90 text-wrap max-w-[800px] text-white opacity-90">
 				<span>10th semester Systems Engineering Student.</span> Emphasized in the field of web development. 
 				From Sincelejo, Sucre, Colombia. 
 			</h2>
@@ -67,6 +69,14 @@ description='Contrata a Rafael Castillo para crear tu aplicacion web'>
 				Proyectos
 			</h2>
 			<Projects />
+		</SectionContainer>
+
+		<SectionContainer id="about">
+			<h2 class="text-3xl font-semibold mb-4 flex gap-x-3 items-center">
+				<ProfileCheck class="size-8" />
+				About me
+			</h2>
+			<AboutMe />
 		</SectionContainer>
 	</main>
 </Layout>
